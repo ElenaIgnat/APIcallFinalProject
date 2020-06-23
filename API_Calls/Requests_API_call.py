@@ -32,7 +32,7 @@ def sky_scanner():
 
 
 if __name__ == '__main__':
-    print(json.dumps(geo_api(), indent=2))
+    # print(json.dumps(geo_api(), indent=2))
 
     # print('-----------flight data response-----------------')
     print(json.dumps(sky_scanner(), indent=2))
