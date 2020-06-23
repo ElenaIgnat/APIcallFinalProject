@@ -1,5 +1,6 @@
 r"""python -m pytest C:\Users\elena\PycharmProjects\API_call_project\TestAPI\tests.py -v"""
-import CollectJSONdata as jsonData
+
+from API_Calls import CollectJSONdata as jsonData
 import logging
 from datetime import datetime
 

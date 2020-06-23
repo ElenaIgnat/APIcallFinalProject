@@ -1,0 +1,6 @@
+ExpectedCode,ExpectedLinks,totalCount
+nn,/v1/locale/locales?offset=0&limit=5,747
+ar_JO,/v1/locale/locales?offset=5&limit=5
+bg,/v1/locale/locales?offset=745&limit=5
+kea,
+nds,
