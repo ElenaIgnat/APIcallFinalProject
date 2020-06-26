@@ -20,8 +20,7 @@ expected_sky_scanner_values = os.path.join(cd.PROJECT_DIRECTORY_PATH, config_dat
 FILE_DATE = datetime.now().strftime("%Y%m%d-%H%M%S")
 logging.basicConfig(level=logging.DEBUG,
                     filename=f'tests_{FILE_DATE}.log',
-                    format='%(asctime)s - %(levelname)s - %(message)s',
-                    datefmt='%m-%d-%Y %I:%M:%S %p')
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 @utils.request_duration
