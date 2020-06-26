@@ -24,7 +24,9 @@
          }
       ],
       "files": [
-         {"quotes_json":  "ResourceFiles\\quotes.json"}
+         {"quotes_json":  "ResourceFiles\\quotes.json"},
+         {"city_csv":  "ResourceFiles\\City.csv"},
+         {"geo_code_csv":  "ResourceFiles\\Geo_code.csv"}
       ]
    }
 }

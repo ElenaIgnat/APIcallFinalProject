@@ -6,7 +6,6 @@ scanner_url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/api
 x_rapidapi_key = '07170cf1bfmsh75255af62dcbb94p1f8b04jsn83e66ae5964a'
 
 
-@utils.request_duration
 def geo_api():
     headers = {
         'x-rapidapi-host': "wft-geo-db.p.rapidapi.com",
@@ -18,7 +17,6 @@ def geo_api():
     return data
 
 
-@utils.request_duration
 def sky_scanner():
     querystring = {"query": "Stockholm"}
     headers = {
@@ -32,10 +30,10 @@ def sky_scanner():
 
 
 if __name__ == '__main__':
-    # print(json.dumps(geo_api(), indent=2))
+    print(json.dumps(geo_api(), indent=2))
 
     # print('-----------flight data response-----------------')
-    print(json.dumps(sky_scanner(), indent=2))
+    # print(json.dumps(sky_scanner(), indent=2))
     # list_IDs = []
     # list_names = []
     # for item in sky_scanner()['Places']:
