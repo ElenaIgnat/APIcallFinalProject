@@ -1,14 +1,17 @@
 import Utils as utils
+import ConfigData as cd
 import json
 
-geo_url = "https://wft-geo-db.p.rapidapi.com/v1/locale/locales"
-scanner_url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/"
-x_rapidapi_key = '07170cf1bfmsh75255af62dcbb94p1f8b04jsn83e66ae5964a'
+config_data = cd.ConfigData().get_instance()
+
+geo_url = config_data.get_value(cd.GEO_URL)
+scanner_url = config_data.get_value(cd.SCANNER_URL)
+x_rapidapi_key = config_data.get_value(cd.X_RAPIDAPI_KEY)
 
 
 def geo_api():
     headers = {
-        'x-rapidapi-host': "wft-geo-db.p.rapidapi.com",
+        'x-rapidapi-host': config_data.get_value(cd.GEO_RAPIDAPI_HOST),
         'x-rapidapi-key': x_rapidapi_key
     }
 
@@ -20,7 +23,7 @@ def geo_api():
 def sky_scanner():
     querystring = {"query": "Stockholm"}
     headers = {
-        'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+        'x-rapidapi-host': config_data.get_value(cd.SCANNER_RAPIDAPI_HOST),
         'x-rapidapi-key': x_rapidapi_key
     }
 
@@ -30,14 +33,14 @@ def sky_scanner():
 
 
 if __name__ == '__main__':
-    print(json.dumps(geo_api(), indent=2))
+    # print(json.dumps(geo_api(), indent=2))
 
     # print('-----------flight data response-----------------')
-    # print(json.dumps(sky_scanner(), indent=2))
-    # list_IDs = []
-    # list_names = []
-    # for item in sky_scanner()['Places']:
-    #     list_IDs.append(item['PlaceId'])
-    #     list_names.append(item['PlaceName'])
-    # print(list_IDs)
-    # print(list_names)
+    print(json.dumps(sky_scanner(), indent=2))
+    list_IDs = []
+    list_names = []
+    for item in sky_scanner()['Places']:
+        list_IDs.append(item['PlaceId'])
+        list_names.append(item['PlaceName'])
+    print(list_IDs)
+    print(list_names)
