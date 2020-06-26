@@ -4,6 +4,7 @@ import Utils as utils
 from API_Calls import Requests_API_call as ApiCalls
 
 geo_data = ApiCalls.geo_api()
+city_data = ApiCalls.sky_scanner()
 quotes_json = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\quotes.json'
 
 
@@ -29,18 +30,28 @@ def get_geo_db_total_count():
     return geo_data['metadata']['totalCount']
 
 
+@utils.request_duration
 def get_quotes_language():
     json_data = utils.read_json_file(quotes_json)
     return [key for key in json_data.keys()]
 
 
 def get_sky_scanner_place_id():
-    json_response = ApiCalls.sky_scanner()
-    return [item['PlaceId'] for item in json_response['Places']]
+    return [item['PlaceId'] for item in city_data['Places']]
+
+
+def get_sky_scanner_place_name():
+    return [item['PlaceName'] for item in city_data['Places']]
+
 
 if __name__ == '__main__':
-    # print(get_geo_db_data())
+    print(get_geo_db_data())
     # print(get_geo_db_links())
     # print(get_geo_db_total_count())
-    for item in range(len(get_quotes_language())):
-        print(item)
+    #
+    # print(get_quotes_language())
+    #
+    # print(get_sky_scanner_place_name())
+    # print(get_sky_scanner_place_id())
+
+

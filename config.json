@@ -1,0 +1,30 @@
+{
+   "config":{
+      "url_servers":{
+         "geo_api":[
+            {
+               "geo_url":"https://wft-geo-db.p.rapidapi.com/v1/locale/locales"
+            },
+            {
+               "geo-rapidapi-host":"wft-geo-db.p.rapidapi.com"
+            }
+         ],
+         "scanner_api":[
+            {
+               "scanner_url":"https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/"
+            },
+            {
+               "scanner-rapidapi-host":"skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+            }
+         ]
+      },
+      "authenticator":[
+         {
+            "x_rapidapi_key":"07170cf1bfmsh75255af62dcbb94p1f8b04jsn83e66ae5964a"
+         }
+      ],
+      "files": [
+         {"quotes_json":  "ResourceFiles\\quotes.json"}
+      ]
+   }
+}

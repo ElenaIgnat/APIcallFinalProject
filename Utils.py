@@ -62,8 +62,11 @@ def read_csv_specific_column(input_file, column_index):
 
 
 if __name__ == '__main__':
-    test_json = r'C:\Users\elena\PycharmProjects\API_call_project\ResorceFiles\quotes.json'
+    test_json = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\quotes.json'
     test_csv = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\Geo_code.csv'
+    test_csv_city = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\City.csv'
     print(json.dumps(read_json_file(test_json), indent=2))
     print(read_csv_specific_column(test_csv, 2))
+    print(read_csv_specific_column(test_csv_city, 1))
+    print(read_csv_specific_column(test_csv_city, 0))
 
