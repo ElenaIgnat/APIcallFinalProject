@@ -9,6 +9,8 @@ SCANNER_URL = 'scanner_url'
 SCANNER_RAPIDAPI_HOST = 'scanner-rapidapi-host'
 X_RAPIDAPI_KEY = 'x_rapidapi_key'
 QUOTES_JSON = 'quotes_json'
+CITY_CSV = 'city_csv'
+GEO_CODE_CSV = 'geo_code_csv'
 
 
 class ConfigData:

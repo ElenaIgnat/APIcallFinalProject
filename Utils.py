@@ -1,5 +1,6 @@
 import functools
 import os
+import logging
 import simplejson as json
 from requests import request
 from timeit import default_timer as timer
@@ -18,7 +19,7 @@ def request_duration(input_function):
         value = input_function(*args, **kwargs)
         end_time = timer()
         duration = end_time - start_time
-        print("\n{} method duration: {:.3f}".format(input_function.__name__, duration))
+        print("{} method duration: {:.3f}".format(input_function.__name__, duration))
         return value
     return new_function
 
