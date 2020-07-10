@@ -33,10 +33,11 @@ def sky_scanner():
 
 
 if __name__ == '__main__':
-    print(json.dumps(geo_api(), indent=2))
-    lista=[]
-    for item in geo_api()['data']:
-        lista.append(item['code'])
+    # print(json.dumps(geo_api(), indent=2))
+    # mylist=[]
+    # for item in geo_api()['data']:
+    #     mylist.append(item['code'])
+    # print(mylist)
     [print(dict_val['code']) for dict_val in geo_api()['data']]
     # print('-----------flight data response-----------------')
     # print(json.dumps(sky_scanner(), indent=2))
@@ -47,3 +48,4 @@ if __name__ == '__main__':
     #     list_names.append(item['PlaceName'])
     # print(list_IDs)
     # print(list_names)
+

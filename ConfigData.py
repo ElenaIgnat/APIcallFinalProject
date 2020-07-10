@@ -35,7 +35,7 @@ class ConfigData:
     def read_from_config_file(self):
         if os.path.isfile(self.config_file) and os.stat(self.config_file).st_size != 0:
             try:
-                # read config file and load the content as a json object
+                # reads config file and loads the content as a json object
                 with open(self.config_file) as f:
                     data = json.load(f)
                     for item in data['config']['url_servers']['geo_api']:

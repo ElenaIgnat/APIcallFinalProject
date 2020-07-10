@@ -1,30 +1,19 @@
+"""This file contains some utils that will be used in the next steps of the project"""
+
 import functools
 import os
-import logging
 import simplejson as json
 from requests import request
-from timeit import default_timer as timer
 
 
 def get_api_call_response(url, headers, querystring=None):
+    """ function that returns a response of an API call"""
     if querystring is None:
         return request('GET', url, headers=headers)
     return request('GET', url, headers=headers, params=querystring)
 
-
-def request_duration(input_function):
-    @functools.wraps(input_function)
-    def new_function(*args, **kwargs):
-        start_time = timer()
-        value = input_function(*args, **kwargs)
-        end_time = timer()
-        duration = end_time - start_time
-        print("{} method duration: {:.3f}".format(input_function.__name__, duration))
-        return value
-    return new_function
-
-
 def read_json_file(response_file):
+    """Function that opens and reads a json file after validate it"""
     if os.path.isfile(response_file) and os.stat(response_file).st_size != 0:
         try:
             print("Read JSON from path: {}".format(response_file))
@@ -41,7 +30,7 @@ def read_json_file(response_file):
 
 
 def read_csv_specific_column(input_file, column_index):
-    """Read specific column from csv file and return a list"""
+    """Function that reads specific column from csv file and return a list"""
     if os.path.isfile(input_file) and os.stat(input_file).st_size != 0:
         try:
             with open('{}'.format(input_file), 'r') as csv_read:
@@ -70,4 +59,3 @@ if __name__ == '__main__':
     print(read_csv_specific_column(test_csv, 2))
     print(read_csv_specific_column(test_csv_city, 1))
     print(read_csv_specific_column(test_csv_city, 0))
-

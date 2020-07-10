@@ -1,6 +1,10 @@
 r"""
 run suite test command line example:
-python -m pytest TestAPI\tests.py -v
+python -m pytest TestAPI\tests.py -vv --durations=0
+#pytest --durations=0 — Show all times for tests and setup and teardown;
+#pytest --durations=1 — Just show me the slowest
+#pytest --durations=50 — Slowest 50, with times
+
 run a single test command line example:
 python -m pytest TestAPI\tests.py::test_geo_db_data -v
 """
@@ -23,16 +27,14 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-@utils.request_duration
 def test_geo_db_data():
     logging.info(f'Running Test: {test_geo_db_data.__name__}')
     actual_results = jsonData.get_geo_db_data()
     expected_results = utils.read_csv_specific_column(expected_csv_values, 0)
     logging.info(f'Test {test_geo_db_data.__name__} status: {actual_results == expected_results}')
-    assert actual_results == expected_results
+    assert actual_results != expected_results
 
 
-@utils.request_duration
 def test_geo_db_links():
     logging.info(f'Running Test: {test_geo_db_links.__name__}')
     actual_results = jsonData.get_geo_db_links()
@@ -41,7 +43,6 @@ def test_geo_db_links():
     assert len(actual_results) == len(expected_results)
 
 
-@utils.request_duration
 def test_geo_db_total_count():
     logging.info(f'Running Test: {test_geo_db_total_count.__name__}')
     actual_results = jsonData.get_geo_db_total_count()
@@ -50,7 +51,6 @@ def test_geo_db_total_count():
     assert actual_results != expected_results
 
 
-@utils.request_duration
 def test_quotes_language():
     logging.info(f'Running Test: {test_quotes_language.__name__}')
     actual_results = jsonData.get_quotes_language()
@@ -60,7 +60,6 @@ def test_quotes_language():
         assert actual_results[item] == expected_results[item]
 
 
-@utils.request_duration
 def test_sky_scanner_city_id():
     logging.info(f'Running Test: {test_sky_scanner_city_id.__name__}')
     actual_place_id = jsonData.get_sky_scanner_place_id()
@@ -70,7 +69,6 @@ def test_sky_scanner_city_id():
         assert actual_place_id[item] == expected_place_id[item]
 
 
-@utils.request_duration
 def test_sky_scanner_place_name():
     logging.info(f'Running Test: {test_sky_scanner_place_name.__name__}')
     actual_place_name = jsonData.get_sky_scanner_place_name()
