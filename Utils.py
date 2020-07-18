@@ -1,6 +1,8 @@
-"""This file contains some utils that will be used in the next steps of the project"""
+"""
+This file contains util functions that are used in different python files.
+The purpose of this file is to avoid duplicate code and unnecessary memory
+allocation using different functions from the same file"""
 
-import functools
 import os
 import simplejson as json
 from requests import request
@@ -12,6 +14,7 @@ def get_api_call_response(url, headers, querystring=None):
         return request('GET', url, headers=headers)
     return request('GET', url, headers=headers, params=querystring)
 
+
 def read_json_file(response_file):
     """Function that opens and reads a json file after validate it"""
     if os.path.isfile(response_file) and os.stat(response_file).st_size != 0:
@@ -21,8 +24,8 @@ def read_json_file(response_file):
                 inp_data = input_json.read()
                 inp_data = json.loads(inp_data)
                 return inp_data
-        except Exception as e:
-            print(e)
+        except Exception as err_error:
+            print(err_error)
             return ""
     else:
         print("File not found under: {}".format(response_file))
@@ -44,18 +47,18 @@ def read_csv_specific_column(input_file, column_index):
                         continue
                     column_list.append(line[column_index])
             return column_list
-        except Exception as e:
-            return str(e)
+        except Exception as error_e:
+            return str(error_e)
     else:
         print("NO SUCH FILE OR DIRECTORY!\n\t", input_file)
         return ""
 
 
 if __name__ == '__main__':
-    test_json = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\quotes.json'
-    test_csv = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\Geo_code.csv'
-    test_csv_city = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\City.csv'
-    print(json.dumps(read_json_file(test_json), indent=2))
-    print(read_csv_specific_column(test_csv, 2))
-    print(read_csv_specific_column(test_csv_city, 1))
-    print(read_csv_specific_column(test_csv_city, 0))
+    TEST_JSON = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\quotes.json'
+    TEST_CSV_GEO = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\Geo_code.csv'
+    TEST_CSV_CITY = r'C:\Users\elena\PycharmProjects\API_call_project\ResourceFiles\City.csv'
+    print(json.dumps(read_json_file(TEST_JSON), indent=2))
+    print(read_csv_specific_column(TEST_CSV_GEO, 2))
+    print(read_csv_specific_column(TEST_CSV_CITY, 1))
+    print(read_csv_specific_column(TEST_CSV_CITY, 0))
